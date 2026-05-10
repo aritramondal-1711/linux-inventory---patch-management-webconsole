@@ -1,0 +1,175 @@
+
+PLAY [Patch Using Python] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+[WARNING]: Platform linux on host devserver02 is using the discovered Python
+interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.16/reference_appendices/interpreter_discovery.html for more information.
+[WARNING]: Platform linux on host devserver01 is using the discovered Python
+interpreter at /usr/bin/python3.9, but future installation of another Python
+interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.16/reference_appendices/interpreter_discovery.html for more information.
+ok: [devserver02]
+ok: [prdsrv01]
+ok: [prdsrv02]
+ok: [devserver01]
+
+TASK [Taking Precheck] *********************************************************
+changed: [prdsrv01] => (item=echo "******************************************")
+changed: [prdsrv02] => (item=echo "******************************************")
+changed: [devserver02] => (item=echo "******************************************")
+changed: [devserver01] => (item=echo "******************************************")
+changed: [prdsrv01] => (item=echo "$(hostname)")
+changed: [prdsrv02] => (item=echo "$(hostname)")
+changed: [devserver02] => (item=echo "$(hostname)")
+changed: [devserver01] => (item=echo "$(hostname)")
+changed: [prdsrv01] => (item=echo "******************************************")
+changed: [prdsrv02] => (item=echo "******************************************")
+changed: [devserver01] => (item=echo "******************************************")
+changed: [devserver02] => (item=echo "******************************************")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "Uptime:- $(uptime)")
+changed: [prdsrv02] => (item=echo "Uptime:- $(uptime)")
+changed: [devserver01] => (item=echo "Uptime:- $(uptime)")
+changed: [devserver02] => (item=echo "Uptime:- $(uptime)")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "Filesystem utilization")
+changed: [prdsrv02] => (item=echo "Filesystem utilization")
+changed: [devserver01] => (item=echo "Filesystem utilization")
+changed: [devserver02] => (item=echo "Filesystem utilization")
+changed: [prdsrv01] => (item=df -h | grep -v tmpfs)
+changed: [prdsrv02] => (item=df -h | grep -v tmpfs)
+changed: [devserver01] => (item=df -h | grep -v tmpfs)
+changed: [devserver02] => (item=df -h | grep -v tmpfs)
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [prdsrv01] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [devserver01] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver02] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [prdsrv01] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [prdsrv02] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [devserver01] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [devserver02] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [prdsrv01] => (item=echo "Active Services :- ")
+changed: [prdsrv02] => (item=echo "Active Services :- ")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=systemctl list-units --state=running)
+changed: [prdsrv02] => (item=systemctl list-units --state=running)
+changed: [devserver01] => (item=echo "Active Services :- ")
+changed: [devserver02] => (item=echo "Active Services :- ")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [devserver01] => (item=systemctl list-units --state=running)
+changed: [devserver02] => (item=systemctl list-units --state=running)
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+
+TASK [Save Prechecks] **********************************************************
+changed: [prdsrv02 -> localhost]
+changed: [devserver02 -> localhost]
+changed: [devserver01 -> localhost]
+changed: [prdsrv01 -> localhost]
+
+TASK [Patching] ****************************************************************
+ok: [prdsrv02]
+ok: [prdsrv01]
+ok: [devserver02]
+ok: [devserver01]
+
+TASK [Taking Postcheck] ********************************************************
+changed: [prdsrv01] => (item=echo "******************************************")
+changed: [prdsrv02] => (item=echo "******************************************")
+changed: [devserver01] => (item=echo "******************************************")
+changed: [devserver02] => (item=echo "******************************************")
+changed: [prdsrv01] => (item=echo "$(hostname)")
+changed: [prdsrv02] => (item=echo "$(hostname)")
+changed: [devserver02] => (item=echo "$(hostname)")
+changed: [devserver01] => (item=echo "$(hostname)")
+changed: [prdsrv01] => (item=echo "******************************************")
+changed: [prdsrv02] => (item=echo "******************************************")
+changed: [devserver01] => (item=echo "******************************************")
+changed: [devserver02] => (item=echo "******************************************")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "Uptime:- $(uptime)")
+changed: [prdsrv02] => (item=echo "Uptime:- $(uptime)")
+changed: [devserver01] => (item=echo "Uptime:- $(uptime)")
+changed: [devserver02] => (item=echo "Uptime:- $(uptime)")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "Filesystem utilization")
+changed: [prdsrv01] => (item=echo "Filesystem utilization")
+changed: [prdsrv01] => (item=df -h | grep -v tmpfs)
+changed: [prdsrv02] => (item=df -h | grep -v tmpfs)
+changed: [devserver02] => (item=echo "Filesystem utilization")
+changed: [devserver01] => (item=echo "Filesystem utilization")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver01] => (item=df -h | grep -v tmpfs)
+changed: [devserver02] => (item=df -h | grep -v tmpfs)
+changed: [devserver02] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [prdsrv02] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [devserver02] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [devserver01] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [prdsrv02] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [prdsrv01] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [devserver02] => (item=echo "==========================================")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [devserver02] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [devserver01] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [prdsrv02] => (item=echo "Active Services :- ")
+changed: [prdsrv01] => (item=echo "Active Services :- ")
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=systemctl list-units --state=running)
+changed: [prdsrv01] => (item=systemctl list-units --state=running)
+changed: [devserver01] => (item=echo "Active Services :- ")
+changed: [devserver02] => (item=echo "Active Services :- ")
+changed: [prdsrv01] => (item=echo "==========================================")
+changed: [prdsrv02] => (item=echo "==========================================")
+changed: [devserver01] => (item=systemctl list-units --state=running)
+changed: [devserver02] => (item=systemctl list-units --state=running)
+changed: [devserver01] => (item=echo "==========================================")
+changed: [devserver02] => (item=echo "==========================================")
+
+TASK [Save Postcheck] **********************************************************
+changed: [prdsrv01 -> localhost]
+changed: [prdsrv02 -> localhost]
+changed: [devserver02 -> localhost]
+changed: [devserver01 -> localhost]
+
+PLAY RECAP *********************************************************************
+devserver01                : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+devserver02                : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+prdsrv01                   : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+prdsrv02                   : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

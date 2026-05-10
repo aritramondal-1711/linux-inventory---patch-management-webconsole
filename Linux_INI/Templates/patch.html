@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block container %}
+    <h1 id="patchheading">Remote Execution - Linux Patching</h1>
+    <div id="warning">
+        <h3 id="patchwarninghead">... WARNING ...</h3>
+        <ul id="warnlist">
+            <li id="warnlistitems">If the server status is "SSH Failed", patch will failed as well</li>
+            <li id="warnlistitems">Proper netwrok connection, SSH Configuration and DNS resolution required for patch to success</li>
+            <li id="warnlistitems">This will use ANSIBLE to perform patching</li>
+            <li id="warnlistitems">Be certain that you are patching right server as the patching process may cause service outage temporarily</li>
+            <li id="warnlistitems">After patch a reboot will be required.</li>
+        </ul>
+    </div>
+    <form action="/patch/initiate" method="post" id="patchform">
+        {% csrf_token %}
+        {% for server in servers %}
+            <input type="text" name="servers" id="patchserver" value="{{server}}" readonly>
+        {% endfor %}
+        <div id="patchbtn">
+            <button type="submit" id="patchsubmit" onclick="patchinitiate()">Initiate Patching</button>
+            <button type="reset" id="patchcancel" onclick="hideform()">Cancel Patching</button>
+        </div>
+    </form>
+    <div id="patchprogress">
+        <h2 id="patchhead">Patching in Progress ....</h2>
+    </div>
+{% endblock %}

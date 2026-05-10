@@ -1,0 +1,17 @@
+
+PLAY [Patch Using Python] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+fatal: [localserver]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: Could not resolve hostname localserver: Temporary failure in name resolution", "unreachable": true}
+fatal: [prdsrv02]: FAILED! => {"msg": "Missing sudo password"}
+fatal: [prdsrv01]: FAILED! => {"msg": "Missing sudo password"}
+fatal: [devserver01]: FAILED! => {"msg": "Missing sudo password"}
+fatal: [devserver02]: FAILED! => {"msg": "Missing sudo password"}
+
+PLAY RECAP *********************************************************************
+devserver01                : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+devserver02                : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+localserver                : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+prdsrv01                   : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+prdsrv02                   : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

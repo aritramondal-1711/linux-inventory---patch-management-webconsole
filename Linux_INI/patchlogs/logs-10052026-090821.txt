@@ -1,0 +1,74 @@
+
+PLAY [Patch Using Python] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [arilaptop]
+ok: [localhost]
+
+TASK [Taking Precheck] *********************************************************
+changed: [localhost] => (item=echo "******************************************")
+changed: [arilaptop] => (item=echo "******************************************")
+changed: [arilaptop] => (item=echo "$(hostname)")
+changed: [localhost] => (item=echo "$(hostname)")
+changed: [arilaptop] => (item=echo "******************************************")
+changed: [localhost] => (item=echo "******************************************")
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [localhost] => (item=echo "==========================================")
+changed: [arilaptop] => (item=echo "Uptime:- $(uptime)")
+changed: [localhost] => (item=echo "Uptime:- $(uptime)")
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [localhost] => (item=echo "==========================================")
+changed: [arilaptop] => (item=echo "Filesystem utilization")
+changed: [localhost] => (item=echo "Filesystem utilization")
+changed: [arilaptop] => (item=df -h | grep -v tmpfs)
+changed: [localhost] => (item=df -h | grep -v tmpfs)
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [localhost] => (item=echo "==========================================")
+changed: [arilaptop] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [localhost] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [localhost] => (item=echo "==========================================")
+changed: [arilaptop] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [localhost] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [localhost] => (item=echo "==========================================")
+changed: [arilaptop] => (item=echo "Active Services :- ")
+changed: [localhost] => (item=echo "Active Services :- ")
+changed: [arilaptop] => (item=systemctl list-units --state=running)
+changed: [localhost] => (item=systemctl list-units --state=running)
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [localhost] => (item=echo "==========================================")
+
+TASK [Save Prechecks] **********************************************************
+changed: [arilaptop -> localhost]
+changed: [localhost]
+
+TASK [Patching] ****************************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "'/usr/bin/apt-get upgrade --with-new-pkgs ' failed: E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 36226 (apt-get)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "rc": 100, "stdout": "", "stdout_lines": []}
+ok: [arilaptop]
+
+TASK [Taking Postcheck] ********************************************************
+changed: [arilaptop] => (item=echo "******************************************")
+changed: [arilaptop] => (item=echo "$(hostname)")
+changed: [arilaptop] => (item=echo "******************************************")
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [arilaptop] => (item=echo "Uptime:- $(uptime)")
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [arilaptop] => (item=echo "Filesystem utilization")
+changed: [arilaptop] => (item=df -h | grep -v tmpfs)
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [arilaptop] => (item=sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }')
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [arilaptop] => (item=free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}')
+changed: [arilaptop] => (item=echo "==========================================")
+changed: [arilaptop] => (item=echo "Active Services :- ")
+changed: [arilaptop] => (item=systemctl list-units --state=running)
+changed: [arilaptop] => (item=echo "==========================================")
+
+TASK [Save Postcheck] **********************************************************
+changed: [arilaptop -> localhost]
+
+PLAY RECAP *********************************************************************
+arilaptop                  : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=3    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+

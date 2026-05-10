@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block container %}
+    <h1 id="resultheading">Patch Result</h1>
+
+    <div id="result">
+        {% for line in log %}
+            <pre id="log">{{ line }}</pre>
+        {% endfor %}
+
+    </div>
+
+    <h3 id="resultfile">{{message}}</h3>
+    <h5 id="filename"><span id="filehead">Ansible Logs: </span>{{filename}}</h5>
+    <h5 id="filename"><span id="filehead">Prechekc Log: </span>{{precheck_file}}</h5>
+    <h5 id="filename"><span id="filehead">Postcheck Log: </span>{{postcheck_file}}</h5>
+
+    <div id="checks">
+        <div id="precheck">
+            <h4 id="precheckhead">Prechecked Taken befor patching</h4>
+            {% for line in prechecklog %}
+                <pre id="prechecklog">{{line}}</pre>
+            {% endfor %}
+        </div>
+        <div id="postcheck">
+            <h4 id="postcheckhead">Prechecked Taken befor patching</h4>
+            {% for line in postchecklog %}
+                <pre id="postchecklog">{{line}}</pre>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="resultactiongroup">
+        <button type="button" id="backtohome" onclick="hideform()">Go Back to Inventory</button>
+    </div>
+{% endblock %}

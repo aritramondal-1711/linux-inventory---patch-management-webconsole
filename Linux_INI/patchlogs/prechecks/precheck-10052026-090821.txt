@@ -1,0 +1,76 @@
+******************************************
+arilaptop
+******************************************
+==========================================
+Uptime:-  14:38:28 up  5:16,  3 users,  load average: 1.61, 1.16, 0.71
+==========================================
+Filesystem utilization
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda2       219G   41G  168G  20% /
+==========================================
+CPU UTilization:- 17.68%
+==========================================
+Memory Utilization :- 85.1239%
+==========================================
+Active Services :- 
+  UNIT                                                  LOAD   ACTIVE SUB     DESCRIPTION
+  proc-sys-fs-binfmt_misc.automount                     loaded active running Arbitrary Executable File Formats File System Automount Point
+  cups.path                                             loaded active running CUPS Scheduler
+  init.scope                                            loaded active running System and Service Manager
+  session-197.scope                                     loaded active running Session 197 of User aritra
+  session-198.scope                                     loaded active running Session 198 of User aritra
+  session-2.scope                                       loaded active running Session 2 of User aritra
+  accounts-daemon.service                               loaded active running Accounts Service
+  avahi-daemon.service                                  loaded active running Avahi mDNS/DNS-SD Stack
+  bluetooth.service                                     loaded active running Bluetooth service
+  colord.service                                        loaded active running Manage, Install and Generate Color Profiles
+  cron.service                                          loaded active running Regular background program processing daemon
+  cups-browsed.service                                  loaded active running Make remote CUPS printers available locally
+  cups.service                                          loaded active running CUPS Scheduler
+  dbus.service                                          loaded active running D-Bus System Message Bus
+  fwupd.service                                         loaded active running Firmware update daemon
+  gdm.service                                           loaded active running GNOME Display Manager
+  glances.service                                       loaded active running Glances
+  gnome-remote-desktop.service                          loaded active running GNOME Remote Desktop
+  kerneloops.service                                    loaded active running Tool to automatically collect and submit kernel crash signatures
+  ModemManager.service                                  loaded active running Modem Manager
+  NetworkManager.service                                loaded active running Network Manager
+  nginx.service                                         loaded active running A high performance web server and a reverse proxy server
+  polkit.service                                        loaded active running Authorization Manager
+  power-profiles-daemon.service                         loaded active running Power Profiles daemon
+  rsyslog.service                                       loaded active running System Logging Service
+  rtkit-daemon.service                                  loaded active running RealtimeKit Scheduling Policy Service
+  snap.canonical-livepatch.canonical-livepatchd.service loaded active running Service for snap application canonical-livepatch.canonical-livepatchd
+  snapd.service                                         loaded active running Snap Daemon
+  ssh.service                                           loaded active running OpenBSD Secure Shell server
+  switcheroo-control.service                            loaded active running Switcheroo Control Proxy service
+  systemd-journald.service                              loaded active running Journal Service
+  systemd-logind.service                                loaded active running User Login Management
+  systemd-oomd.service                                  loaded active running Userspace Out-Of-Memory (OOM) Killer
+  systemd-resolved.service                              loaded active running Network Name Resolution
+  systemd-timesyncd.service                             loaded active running Network Time Synchronization
+  systemd-udevd.service                                 loaded active running Rule-based Manager for Device Events and Files
+  thermald.service                                      loaded active running Thermal Daemon Service
+  udisks2.service                                       loaded active running Disk Manager
+  unattended-upgrades.service                           loaded active running Unattended Upgrades Shutdown
+  upower.service                                        loaded active running Daemon for power management
+  user@1000.service                                     loaded active running User Manager for UID 1000
+  wpa_supplicant.service                                loaded active running WPA supplicant
+  avahi-daemon.socket                                   loaded active running Avahi mDNS/DNS-SD Stack Activation Socket
+  cups.socket                                           loaded active running CUPS Scheduler
+  dbus.socket                                           loaded active running D-Bus System Message Bus Socket
+  snapd.socket                                          loaded active running Socket activation for snappy daemon
+  ssh.socket                                            loaded active running OpenBSD Secure Shell server socket
+  syslog.socket                                         loaded active running Syslog Socket
+  systemd-journald-dev-log.socket                       loaded active running Journal Socket (/dev/log)
+  systemd-journald.socket                               loaded active running Journal Socket
+  systemd-oomd.socket                                   loaded active running Userspace Out-Of-Memory (OOM) Killer Socket
+  systemd-udevd-control.socket                          loaded active running udev Control Socket
+  systemd-udevd-kernel.socket                           loaded active running udev Kernel Socket
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+53 loaded units listed.
+==========================================

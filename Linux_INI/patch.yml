@@ -1,0 +1,65 @@
+---
+- name: Patch Using Python
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Taking Precheck
+    shell: "{{item}}"
+    register: precheck_output
+    loop:
+    - echo "******************************************"
+    - echo "$(hostname)"
+    - echo "******************************************"
+    - echo "=========================================="
+    - echo "Uptime:- $(uptime)"
+    - echo "=========================================="
+    - echo "Filesystem utilization"
+    - df -h | grep -v tmpfs
+    - echo "=========================================="
+    - sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }'
+    - echo "=========================================="
+    - free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}'
+    - echo "=========================================="
+    - echo "Active Services :- "
+    - systemctl list-units --state=running
+    - echo "=========================================="
+
+  - name: Save Prechecks
+    copy: 
+      content: "{{ precheck_output.results | map(attribute='stdout') | join('\n') }}"
+      dest: "{{ precheck_file }}"
+    delegate_to: localhost
+
+  - name: Patching
+    package:
+      name: "*"
+      state: latest
+
+  - name: Taking Postcheck
+    shell: "{{item}}"
+    register: postcheck_output
+    loop:
+    - echo "******************************************"
+    - echo "$(hostname)"
+    - echo "******************************************"
+    - echo "=========================================="
+    - echo "Uptime:- $(uptime)"
+    - echo "=========================================="
+    - echo "Filesystem utilization"
+    - df -h | grep -v tmpfs
+    - echo "=========================================="
+    - sar 1 5 | tail -n 1 | awk '{print "CPU UTilization:- " (100-$NF) "%" }'
+    - echo "=========================================="
+    - free | head -n 2 | awk 'NR>1{print "Memory Utilization :- " ($3/$2)*100 "%"}'
+    - echo "=========================================="
+    - echo "Active Services :- "
+    - systemctl list-units --state=running
+    - echo "=========================================="
+
+  - name: Save Postcheck
+    copy: 
+      content: "{{ postcheck_output.results | map(attribute='stdout') | join('\n') }}"
+      dest: "{{ postcheck_file }}"
+    delegate_to: localhost
+  

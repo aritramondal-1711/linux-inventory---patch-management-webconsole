@@ -1,0 +1,520 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    width: 90%;
+    height: 90%;
+    margin:auto;
+}
+
+/* Style for inventory.html */
+#heading{
+    letter-spacing: 2px;
+    color:black;
+    text-shadow: 2px 2px 5px cyan;
+    width: 90%;
+    text-align: center;
+    font-size: 250%;
+    font-weight: bolder;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+#actiongroup{
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#addbtn{
+    width:fit-content;
+    height: fit-content;
+    padding: 5px;
+    color: black;
+    background-color: lightgreen;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+#addbtn:hover{
+    color:lightgreen;
+    background-color: black;
+    box-shadow: 2px 2px 5px lightgreen;
+}
+
+#Remove:enabled{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+#Remove:enabled:hover{
+    color: red;
+    background-color: black;
+    box-shadow: 2px 2px 10px red;
+}
+
+
+#Patch:enabled{
+   width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    background-color: cornflowerblue;
+    color: black; 
+    border-radius: 10px;
+    margin-left: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+#Patch:enabled:hover{
+    color: cornflowerblue;
+    background-color: black;
+    box-shadow: 2px 2px 10px cornflowerblue;
+}
+
+#Patch:disabled{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    background-color: gray;
+    color:black;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+#Remove:disabled{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    background-color: gray;
+    color:black;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+#table{
+    width:90%;
+    height:fit-content;
+    border: 2px solid cyan;
+    overflow: scroll;
+}
+
+.tablerow{
+    width:90%;
+    height: max-content;
+    border: 2px solid cyan;
+    padding: 2px;
+}
+
+.tableheader{
+    width:max-content;
+    height: max-content;
+    padding:2px;
+    border: 2px solid cyan;
+}
+
+.tableitem{
+    width:max-content;
+    height: max-content;
+    padding:2px;
+    border: 2px solid rgb(142, 125, 28);  
+    text-align: center;  
+}
+
+#searchid{
+    width:90%;
+    height:fit-content;
+    padding: 10px;
+    color:cyan;
+    background-color: black;
+    box-shadow: 1px 1px 5px cyan;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+}
+
+
+/* Style for addserver.html */
+
+.para{
+    width: 80%;
+    height: fit-content;
+    color:yellow;
+    font-style:italic;
+    font-weight: bold;
+    padding: 2px;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+}
+.parahead{
+    width: fit-content;
+    height: fit-content;
+    color:yellow;
+    font-style:italic;
+    font-weight: bold;
+    padding: 2px;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+}
+
+#form{
+    width:50%;
+    height: 80%;
+    margin: auto;
+    box-shadow: 2px 2px 10px cyan;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.input{
+    width:60%;
+    height:50px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.label{
+    width:60%;
+    height:fit-content;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#btns{
+    width:60%;
+    height:20px;
+    margin:auto;
+    padding: 2px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#addserver{
+    width:40%;
+    height: fit-content;
+    padding: 5px;
+    margin: auto;
+    background-color: turquoise;
+    color: black;
+    border-radius: 10px;
+}
+
+#addserver:hover{
+    background-color: black;
+    box-shadow: 2px 2px 10px cyan;
+    color: cyan;
+}
+
+#resetform{
+    width:40%;
+    height: fit-content;
+    padding: 5px;
+    margin: auto;
+    background-color: red;
+    color: black;
+    border-radius: 10px;
+}
+
+#resetform:hover{
+    background-color: black;
+    box-shadow: 2px 2px 10px red;
+    color: red;
+}
+
+#msg{
+    display:none;
+}
+
+#green{
+    width:80%;
+    height:fit-content;
+    background-color: rgb(50, 220, 50);
+    color:black;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    border-radius: 10px;
+    letter-spacing: 2px;
+}
+
+#red{
+    width:80%;
+    height:fit-content;
+    background-color: rgb(236, 63, 63);
+    color:black;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    border-radius: 10px;
+    letter-spacing: 2px;
+}
+
+#message{
+    width:80%;
+    text-align: center;
+}
+
+#closemsg{
+    width:fit-content;
+    height: fit-content;
+    border-radius: 10px;
+    background-color: red;
+    color:black;
+    padding:5px;
+    margin: auto;
+}
+
+#closemsg:hover{
+    background-color: black;
+    color:red;
+    box-shadow: 2px 2px 10px red;
+}
+
+/* Style for patching */
+#patchheading{
+    letter-spacing: 2px;
+    color:black;
+    text-shadow: 2px 2px 5px cyan;
+    width: 90%;
+    text-align: center;
+    font-size: 250%;
+    font-weight: bolder;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#patchform{
+    width:80%;
+    height:fit-content;
+    padding: 10px;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#patchserver{
+    width: max-content;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: black;
+    color: aqua;
+    border: none;
+    box-shadow: 1px 1px 5px cyan;
+}
+
+#patchsubmit{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: aqua;
+    color:black;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+#patchsubmit:hover{
+    background-color: black;
+    color:aqua;
+    box-shadow: 1px 1px 5px aqua;
+}
+
+#patchcancel{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: red;
+    color:black;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+#patchcancel:hover{
+    background-color: black;
+    color:red;
+    box-shadow: 1px 1px 5px red;
+}
+
+#warning{
+    width: 80%;
+    height: fit-content;
+    margin:auto;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: yellow;
+}
+
+#patchwarninghead{
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: darkorange;
+}
+
+#patchprogress{
+    width:80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#patchhead{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    font-weight: bold;
+    font-style: inherit;
+    color: greenyellow;
+    display: none;
+}
+
+/* Style for patch result */
+
+#resultactiongroup{
+    width:80%;
+    height: fit-content;
+    margin: auto;
+}
+
+
+#backtohome{
+    width:fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin: auto;
+    background-color: cyan;
+    color: black;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+#backtohome:hover{
+    background-color: black;
+    box-shadow: 2px 2px 10px cyan;
+    color: cyan;
+}
+
+#resultheading{
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 2px 2px 10px cyan;
+}
+
+#result{
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    box-shadow: 2px 2px 10px cyan;
+    overflow: scroll;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding:10px;
+}
+
+#resultfile{
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:aqua;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#filename{
+    color: chartreuse;
+    width:80%;
+    height: fit-content;
+    margin: auto;
+}
+
+#checks{
+    width: 80%;
+    height: 40%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 2px 10px cyan;
+}
+
+#precheck, #postcheck{
+    width: 40%;
+    height: 90%;
+    background-color: black;
+    overflow: scroll;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 1px 1px 5px cyan;
+}
+
+#precheckhead, #postcheckhead{
+    color: goldenrod;
+}
+
+#filehead{
+    color:orangered;
+}
+
+

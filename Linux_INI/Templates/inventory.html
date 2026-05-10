@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block container %}
+    <h1 id="heading">Linux Inventory</h1>
+    <div id="actiongroup">
+        <button type="button" id="addbtn" onclick="formshow()">Add Server to Inventory</button>
+        <button type="button" id="Remove" disabled onclick="deletesrv()">Remove Servers From Inventory</button>
+        <button type="button" id="Patch" disabled onclick="patchsrv()">Patch Servers</button>
+    </div>
+    <input type="search" name="search" id="searchid" placeholder="Search in Inventory ..." oninput="searchtable()" autocomplete="off">
+    <table id="table">
+        <tr id="tablehead" class="tablerow">
+            <th class="tableheader">Server Nmae</th>
+            <th class="tableheader">Environment</th>
+            <th class="tableheader">Operating System</th>
+            <th class="tableheader">Uptime</th>
+            <th class="tableheader">Action</th>
+        </tr>
+        {% for ini in Linux_Inventory %}
+            <tr class="tablerow">
+                <td class="tableitem">{{ ini.servername }}</td>
+                <td class="tableitem">{{ ini.servergroup }}</td>
+                <td class="tableitem">{{ ini.os_version }}</td>
+                <td class="tableitem">{{ ini.uptime }}</td>
+                <td class="tableitem">
+                    <input type="checkbox" name="selectserver" class="checkboxes" value="{{ ini.servername }}">
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

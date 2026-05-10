@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block container %}
+    <div id="{{msg.style}}">
+        <h1 id="message">{{msg.message}}</h1>
+        <button id="closemsg" onclick="closemsg('{{msg.style}}')">CLose Message</button>
+    </div>
+
+    <form action="/add" method="post" id="form">
+        {% csrf_token %}
+        <p class="parahead">.... WARNING .... </p>
+        <ul class="para">
+            <li>Make sure the server is accessible in Network</li>
+            <li>The server should have DNS entry or hosts file entry for hostname resolution</li>
+            <li>The New server to be added should not match name of a existing host</li>
+            <li>If the server is not accessible via passwordless SSH, many fields will be failed state</li>
+            <li>Make sure give gorrect group for the server</li>
+        </ul>
+        
+        <label class="label" for="servername">Enter ServerName</label>
+        <input class="input" id="servername" type="text" name="servername" placeholder="Server Name" required> 
+
+        <label class="label" for="servergroup">Enter Environment where the sevrer falls in</label>
+        <input class="input" id="servergroup" type="text" name="servergroup" placeholder="Environment (production, nonproduction etc.)" required>
+
+        <div id="btns">
+            <button type="submit" id="addserver">Add Server</button>
+            <button type="reset" id="resetform" onclick="hideform()">Go Back to Inventory</button>
+
+        </div>    
+    </form>
+{% endblock %}
