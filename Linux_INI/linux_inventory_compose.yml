@@ -1,0 +1,13 @@
+services:
+  linux_inventory:
+    image: linux_inventory:1.0
+    ports: 
+    - 8000:8000
+
+    environment:
+      ansble_user: aritra
+      ANSIBLE_HOST_KEY_CHECKING: False
+
+    volumes:
+    - /home/aritra/.ssh/:/root/.ssh/:rw
+  

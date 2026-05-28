@@ -9,9 +9,10 @@ import os
 def inventory(req):
     Linux_Inventory=linux_inventory.objects.all()
     print(Linux_Inventory)
+    Ansible_User=os.getenv("ansble_user","root")
     for hosts in Linux_Inventory:
-        os_v=subprocess.run(["ssh",hosts.servername,"cat /etc/os-release | grep PRETTY_NAME | cut -d '\"' -f 2"],text=True,capture_output=True)
-        upt=subprocess.run(["ssh",hosts.servername,"uptime | cut -d ',' -f 1 | awk -F 'up' '{print $NF}'"],text=True,capture_output=True)
+        os_v=subprocess.run(["ssh",f"{Ansible_User}@{hosts.servername}","cat /etc/os-release | grep PRETTY_NAME | cut -d '\"' -f 2"],text=True,capture_output=True)
+        upt=subprocess.run(["ssh",f"{Ansible_User}@{hosts.servername}","uptime | cut -d ',' -f 1 | awk -F 'up' '{print $NF}'"],text=True,capture_output=True)
         if os_v.returncode != 0:
             os_version="SSH Failed"
         else:
@@ -42,10 +43,11 @@ def addserver(req):
                 break
         
         # If the new server is not a exising one, proceed to add
+        Ansible_User=os.getenv("ansble_user","root")
         if flag == 0:
             servergroup=req.POST.get("servergroup")
-            os_v=subprocess.run(["ssh",servername,"cat /etc/os-release | grep PRETTY_NAME | cut -d '\"' -f 2"],text=True,capture_output=True)
-            upt=subprocess.run(["ssh",servername,"uptime | cut -d ',' -f 1 | awk -F 'up' '{print $NF}'"],text=True,capture_output=True)
+            os_v=subprocess.run(["ssh",f"{Ansible_User}@{servername}","cat /etc/os-release | grep PRETTY_NAME | cut -d '\"' -f 2"],text=True,capture_output=True)
+            upt=subprocess.run(["ssh",f"{Ansible_User}@{servername}","uptime | cut -d ',' -f 1 | awk -F 'up' '{print $NF}'"],text=True,capture_output=True)
 
             print(os_v)
             print(upt)
@@ -128,10 +130,11 @@ def patchinitiate(req):
         with open(postcheck_file,"w") as f:
             f.write("***********************************************")
 
-        subprocess.run(["sudo","chmod","-R","744",f"{logdir}"])
+        subprocess.run(["chmod","-R","744",f"{logdir}"])
+        Ansible_User=os.getenv("ansble_user","root")
 
         # Run Ansible for Patching
-        result=subprocess.Popen(["ansible-playbook","-i","hosts","patch.yml","-e",f"precheck_file={precheck_file}","-e",f"postcheck_file={postcheck_file}"],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        result=subprocess.Popen(["ansible-playbook","-i","hosts","-u",f"{Ansible_User}","patch.yml","-e",f"precheck_file={precheck_file}","-e",f"postcheck_file={postcheck_file}"],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 
         # Saving & Retriving the files
         log=[]
