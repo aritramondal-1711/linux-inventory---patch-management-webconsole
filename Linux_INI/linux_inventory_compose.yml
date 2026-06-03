@@ -1,6 +1,6 @@
 services:
   linux_inventory:
-    image: linux_inventory:1.0
+    image: wliari/linux_inventory:latest
     ports: 
     - 8000:8000
 
