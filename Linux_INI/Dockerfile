@@ -1,4 +1,4 @@
-FROM python
+FROM python:slim
 WORKDIR /app
 
 RUN apt update && apt install ssh  -y
