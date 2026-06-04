@@ -10,5 +10,5 @@ services:
 
     volumes:
     - /home/aritra/.ssh/:/root/.ssh/:rw
-    - ./persistent/db.sqlite3:/app/db.sqlite3
+    - /var/lib/jenkins/persistent/db.sqlite3:/app/db.sqlite3
   
