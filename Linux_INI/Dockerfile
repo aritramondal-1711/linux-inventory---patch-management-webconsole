@@ -6,6 +6,9 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install ansible
+RUN python3 manage.py makemigrations
+RUN python3 manage.py migrate
+
 
 COPY . .
 EXPOSE 8000
