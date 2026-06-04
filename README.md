@@ -1,6 +1,7 @@
 ### Agentless Linux Inventory & Patch Management Web Console using Django & Ansible
 
 ## Topic: Linux Inventory & Patch management WebUI Console
+# It's now synced wth Jenkins CI/CD
 
 # Prerequisites:
     • The remote servers should be accessible in network
